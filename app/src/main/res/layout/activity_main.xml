@@ -2,52 +2,94 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
+        android:id="@+id/main_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@mipmap/shipan"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/fdi_text"
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
+            android:layout_height="0dp"
+            android:layout_weight="5"
             android:gravity="center_vertical"
             android:text="FDI"
+            android:textColor="#ffffff"
             android:textSize="40sp" />
 
         <LinearLayout
+            android:id="@+id/main_group"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="0dp"
+            android:layout_weight="2"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/shipan_but"
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@null"
-                android:text="实盘" />
+                android:orientation="vertical">
 
-            <Button
-                android:id="@+id/moni_but"
+                <Button
+                    android:id="@+id/shipan_but"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:checked="true"
+                    android:text="实盘"
+                    android:textColor="#3683D7" />
+
+                <View
+                    android:id="@+id/shipan_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.03"
+                    android:background="#3683D7" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@null"
-                android:text="模拟" />
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/moni_but"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="center"
+                    android:text="模拟"
+                    android:textColor="#ffffff" />
+
+                <View
+                    android:id="@+id/moni_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.03"
+                    android:background="#3683D7"
+                    android:visibility="invisible" />
+            </LinearLayout>
+
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="0dp"
+            android:layout_weight="3"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="16dp"
                 android:src="@mipmap/ic_launcher" />
 
             <EditText
@@ -55,28 +97,30 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@null"
+                android:hint="请输入账户"
                 android:lines="1"
-                android:hint="请输入用户名"
-                android:paddingLeft="10dp" />
+                android:paddingLeft="10dp"
+                android:textColorHint="#ffffff" />
         </LinearLayout>
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="1.5dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:background="#818488" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="0dp"
+            android:layout_weight="3"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="16dp"
                 android:src="@mipmap/ic_launcher" />
 
             <EditText
@@ -84,21 +128,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@null"
-                android:lines="1"
                 android:hint="请输入密码"
-                android:paddingLeft="10dp" />
+                android:inputType="textPassword"
+                android:lines="1"
+                android:paddingLeft="10dp"
+                android:textColorHint="#ffffff" />
         </LinearLayout>
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="1.5dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:background="#818488" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="0dp"
+            android:layout_weight="3"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -106,12 +153,13 @@
                 android:id="@+id/remname_box"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp" />
+                android:layout_marginLeft="16dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="记住账号" />
+                android:text="记住账号"
+                android:textColor="#ffffff" />
 
             <TextView
                 android:layout_width="0dp"
@@ -130,40 +178,50 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="15dp"
-                android:text="记住账号" />
+                android:layout_marginRight="16dp"
+                android:text="记住账号"
+                android:textColor="#ffffff" />
         </LinearLayout>
 
         <Button
             android:id="@+id/sign_but"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:alpha="50"
+            android:layout_height="40dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/psdbut"
             android:text="登 陆 模 拟"
-            />
+            android:textColor="#ffffff" />
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <Button
+
                 android:id="@+id/fgt_but"
                 android:layout_width="0dp"
-                android:layout_height="60dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="5dp"
                 android:layout_weight="1"
+                android:background="@drawable/psdbut"
                 android:text="忘记密码"
-                android:layout_marginLeft="15dp"/>
+                android:textColor="#ffffff" />
 
             <Button
                 android:id="@+id/zhuce_but"
                 android:layout_width="0dp"
-                android:layout_height="60dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="16dp"
                 android:layout_weight="1"
-                android:layout_marginRight="15dp"
-                android:text="免费注册" />
+                android:background="@drawable/psdbut"
+                android:text="免费注册"
+                android:textColor="#ffffff" />
 
         </LinearLayout>
     </LinearLayout>

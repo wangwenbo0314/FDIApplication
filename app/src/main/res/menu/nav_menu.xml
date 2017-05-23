@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/notification"
+            android:icon="@mipmap/ic_launcher"
+            android:title="通知通告" />
+        <item
+            android:id="@+id/psd"
+            android:icon="@mipmap/ic_launcher"
+            android:title="密码修改" />
+        <item
+            android:id="@+id/system"
+            android:icon="@mipmap/ic_launcher"
+            android:title="系统信息" />
+        <item
+            android:id="@+id/exit"
+            android:icon="@mipmap/ic_launcher"
+            android:title="安全退出" />
+    </group>
+
+</menu>

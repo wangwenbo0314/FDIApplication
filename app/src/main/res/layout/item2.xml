@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingRight="5dp"
+    android:paddingLeft="5dp">
+
+    <TextView
+        android:id="@+id/item1"
+        android:layout_width="75dp"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:text="合约"
+        >
+
+    </TextView>
+
+    <LinearLayout
+        android:id="@+id/head"
+        android:layout_width="1050dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/item2"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="品种">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/item3"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="最新价">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/item4"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="涨跌">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/item5"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="涨跌幅">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/item6"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="买一">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/item7"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="买量">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/item8"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="卖一">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/item9"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="卖量"
+            />
+        <TextView
+            android:id="@+id/item10"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="成交量" />
+        <TextView
+            android:id="@+id/item11"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="持仓量"
+            />
+        <TextView
+            android:id="@+id/item12"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="成交额"
+            />
+        <TextView
+            android:id="@+id/item13"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="昨日价"
+            />
+        <TextView
+            android:id="@+id/item14"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="现手"
+            />
+        <TextView
+            android:id="@+id/item15"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="最高价"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>
