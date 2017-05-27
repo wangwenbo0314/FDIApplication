@@ -12,11 +12,13 @@ import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.example.fdi.fdiapplication.Services.SystemListener;
 import com.example.fdi.fdiapplication.databinding.ActivityMainBinding;
 import com.example.fdi.fdiapplication.model.Loginrsp;
+import com.example.fdi.fdiapplication.utils.GetLocalHostIp;
 import com.example.fdi.fdiapplication.utils.MessageHelperFinal;
 import com.example.fdi.fdiapplication.utils.NioClientHelper;
 import com.example.fdi.fdiapplication.utils.UDPClientHelper;
@@ -38,10 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /*
-     * 方法名：netClint
      * 功  能：新建异步对象，建立网络连接
-     * 参  数：无
-     * 返回值：无
     */
     @SuppressLint("WrongConstant")
     private void netClint() {

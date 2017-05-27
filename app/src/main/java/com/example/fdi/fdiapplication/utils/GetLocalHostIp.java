@@ -17,10 +17,10 @@ public class GetLocalHostIp
 	    try {
 	    	Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); 
 	        while (en.hasMoreElements()) {
-	            NetworkInterface intf = en.nextElement();
+	            NetworkInterface intf = (NetworkInterface) en.nextElement();
 	            Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses();
 	            while (enumIpAddr.hasMoreElements()) {
-	                 InetAddress inetAddress = enumIpAddr.nextElement();
+	                 InetAddress inetAddress = (InetAddress) enumIpAddr.nextElement();
 	                 if (!inetAddress.isLoopbackAddress()  && !inetAddress.isLinkLocalAddress() 
 	                		 	&& inetAddress.isSiteLocalAddress()) {
 	                	 sb.append(inetAddress.getHostAddress().toString()+"\n");

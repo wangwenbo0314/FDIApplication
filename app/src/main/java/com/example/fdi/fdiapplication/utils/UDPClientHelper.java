@@ -1,5 +1,8 @@
 package com.example.fdi.fdiapplication.utils;
 
+import android.content.Context;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.util.Log;
 
 import com.example.fdi.fdiapplication.Services.DataReciveEvent;
@@ -164,8 +167,7 @@ public class UDPClientHelper {
         try {
             synchronized (networkGoodObject) {
                 if (networkGood) {
-                    Log.i("Tag102",GetMacAddr_Local.GetMacLocal());
-                    networkGood = SendMessage(MessageHelperFinal.HeartBeatMessage(GetMacAddr_Local.GetMacLocal()+"|"+clientsocket.getLocalPort()));
+                    networkGood = SendMessage(MessageHelperFinal.HeartBeatUDPMessage(String.valueOf(clientsocket.getLocalPort())));
                 } else {
                     synchronized (SendSocket) {
                         UnInit();
@@ -261,7 +263,6 @@ public class UDPClientHelper {
         }
         return false;
     }
-
 
     /**
      * 承载对象Client

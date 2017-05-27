@@ -180,7 +180,7 @@ public class NioClientHelper {
     private void SendCheckMessage() {
         try {
             SendMainMessageASync(MessageHelperFinal.CheckMessage("|", String.valueOf(clientsocket.getLocalPort())));
-            Log.i("Tag02","已经发送check检查！" + "本地端口：" + clientsocket.getLocalPort());
+            Log.i("Tag02","已经发送check检查！" + "本地端口：" + MessageHelperFinal.CheckMessage("|", String.valueOf(clientsocket.getLocalPort())));
         } catch (Exception e)
 
         {

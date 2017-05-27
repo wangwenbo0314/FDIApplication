@@ -35,7 +35,6 @@ public class ZIPUtilFinal
         ByteArrayInputStream bais = new ByteArrayInputStream(data);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
-        // ѹ��
         compress(bais, baos);
 
         byte[] output = baos.toByteArray();

@@ -11,6 +11,10 @@ public class MessageHelperFinal
 	{
 		return "LoginBeat "+secret;
 	}
+	public static String HeartBeatUDPMessage(String iport)
+	{
+		return "LoginBeat "+GetMacAddr_Local.GetMacLocal()+ " | " + iport;
+	}
 
 	/**
 	 * 返回接收到服务器消息的guid
