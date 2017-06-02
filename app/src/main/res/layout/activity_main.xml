@@ -2,229 +2,203 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
-        android:id="@+id/main_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@mipmap/shipan"
-        android:gravity="center_horizontal"
+        android:id="@+id/layout_container"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@mipmap/ic_bg_main"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/fdi_text"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="5"
-            android:gravity="center_vertical"
-            android:text="FDI"
-            android:textColor="#ffffff"
-            android:textSize="40sp" />
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="150dip"
+            android:gravity="center">
 
-        <LinearLayout
-            android:id="@+id/main_group"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/shipan_but"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
+            <RadioGroup
+                android:id="@+id/radiogroup_server"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checkedButton="@+id/simu"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/firm"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
+                    android:layout_weight="1.0"
+                    android:button="@null"
                     android:gravity="center"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:checked="true"
                     android:text="实盘"
-                    android:textColor="#3683D7" />
+                    android:textColor="@drawable/selector_marketchart_textcolor_bluewhite" />
 
-                <View
-                    android:id="@+id/shipan_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.03"
-                    android:background="#3683D7" />
-            </LinearLayout>
+
+                <RadioButton
+                    android:id="@id/simu"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
+                    android:layout_weight="1.0"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:background="@mipmap/ic_bg_but"
+                    android:text="模拟"
+                    android:textColor="@drawable/selector_marketchart_textcolor_bluewhite" />
+            </RadioGroup>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0.0dip"
+            android:layout_weight="1.0"
+            android:paddingLeft="20.0dip"
+            android:paddingRight="20.0dip">
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:id="@+id/login_form_username"
+                android:layout_width="fill_parent"
+                android:layout_height="54.0dip"
+                android:layout_marginTop="10.0dip"
+                android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/moni_but"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/ic_person_main" />
+
+                <EditText
+                    android:id="@+id/username"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="10.0dip"
                     android:background="@null"
-                    android:gravity="center"
-                    android:text="模拟"
-                    android:textColor="#ffffff" />
-
-                <View
-                    android:id="@+id/moni_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.03"
-                    android:background="#3683D7"
-                    android:visibility="invisible" />
+                    android:ems="10"
+                    android:hint="请输入账号"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true"
+                    android:textColor="@color/theme_white"
+                    android:textColorHint="@color/theme_white"
+                    android:textSize="14.0sp" />
             </LinearLayout>
 
+            <View
+                android:id="@+id/view_username_divide"
+                style="@style/horizontal_divider"
+                android:layout_below="@id/login_form_username"
+                android:layout_marginBottom="10.0dip" />
 
-        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/login_form_password"
+                android:layout_width="fill_parent"
+                android:layout_height="54.0dip"
+                android:layout_alignLeft="@+id/view_password_divide"
+                android:layout_below="@+id/view_username_divide"
+                android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/ic_psd_main" />
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="16dp"
-                android:src="@mipmap/ic_launcher" />
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="0.0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="10.0dip"
+                    android:layout_marginRight="10.0dip"
+                    android:layout_weight="1.0"
+                    android:background="@null"
+                    android:ems="10"
+                    android:hint="请输入密码"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:textColor="@color/theme_white"
+                    android:textColorHint="@color/theme_white"
+                    android:textSize="14.0sp" />
+            </LinearLayout>
 
-            <EditText
-                android:id="@+id/name_text"
+            <View
+                android:id="@id/view_password_divide"
+                style="@style/horizontal_divider"
+                android:layout_below="@id/login_form_password" />
+
+            <RelativeLayout
+                android:id="@+id/layout_password_option"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/view_password_divide"
+                android:layout_marginBottom="15.0dip"
+                android:layout_marginTop="15.0dip">
+
+                <CheckBox
+                    android:id="@+id/remember_username"
+                    style="@style/login_check_box_remember_account"
+                    android:layout_alignParentLeft="true"
+                    android:background="@null"
+                    android:button="@null"
+                    android:drawableLeft="@drawable/selector_login_new_checkbox"
+                    android:drawablePadding="5.0dip"
+                    android:textColor="@color/theme_white" />
+
+                <CheckBox
+                    android:id="@+id/remember_password"
+                    style="@style/login_check_box_remember_password"
+                    android:layout_alignParentRight="true"
+                    android:background="@null"
+                    android:button="@null"
+                    android:drawableLeft="@drawable/selector_login_new_checkbox"
+                    android:drawablePadding="5.0dip"
+                    android:textColor="@color/theme_white" />
+            </RelativeLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@null"
-                android:hint="请输入账户"
-                android:lines="1"
-                android:paddingLeft="10dp"
-                android:textColorHint="#ffffff" />
-        </LinearLayout>
+                android:layout_height="40.0dip"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="60.0dip"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/forget_password"
+                    android:layout_width="0.0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_marginRight="10.0dip"
+                    android:layout_weight="1.0"
+                    android:background="@null"
+                    android:text="忘记密码"
+                    android:textColor="@drawable/selector_textcolor_press_white_bluegray"
+                    android:textSize="14.0sp" />
+
+                <Button
+                    android:id="@+id/register"
+                    android:layout_width="0.0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1.0"
+                    android:background="@null"
+                    android:text="免费注册"
+                    android:textColor="@drawable/selector_textcolor_press_white_bluegray"
+                    android:textSize="14.0sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/action_login"
+                style="@style/login_button_action"
+                android:layout_height="50.0dip"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/layout_password_option"
+                android:layout_marginLeft="0.0dip"
+                android:layout_marginRight="0.0dip"
+                android:background="@drawable/selector_button_login" />
+        </RelativeLayout>
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="1.5dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:background="#818488" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="16dp"
-                android:src="@mipmap/ic_launcher" />
-
-            <EditText
-                android:id="@+id/password_text"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@null"
-                android:hint="请输入密码"
-                android:inputType="textPassword"
-                android:lines="1"
-                android:paddingLeft="10dp"
-                android:textColorHint="#ffffff" />
-        </LinearLayout>
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="1.5dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:background="#818488" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <CheckBox
-                android:id="@+id/remname_box"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="记住账号"
-                android:textColor="#ffffff" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.0"
-                android:alpha="0" />
-
-            <CheckBox
-                android:id="@+id/rempsd_box"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                android:text="记住账号"
-                android:textColor="#ffffff" />
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/sign_but"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:background="@drawable/psdbut"
-            android:text="登 陆 模 拟"
-            android:textColor="#ffffff" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <Button
-
-                android:id="@+id/fgt_but"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/psdbut"
-                android:text="忘记密码"
-                android:textColor="#ffffff" />
-
-            <Button
-                android:id="@+id/zhuce_but"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="16dp"
-                android:layout_weight="1"
-                android:background="@drawable/psdbut"
-                android:text="免费注册"
-                android:textColor="#ffffff" />
-
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:src="@mipmap/ic_logo_main" />
     </LinearLayout>
-
-
 </layout>
+
+

@@ -13,6 +13,6 @@ package com.example.fdi.fdiapplication.myenum;
  */
 public enum EventType
 {
-    heartbeatrsp,loginrsp,onInMoneyrsp,checkrsp,pushrsp
+    heartbeatrsp,loginrsp,checkrsp,pushrsp,allstockinforsp
 }
 

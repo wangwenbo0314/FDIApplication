@@ -5,7 +5,8 @@ package com.example.fdi.fdiapplication.bean;
  */
 
 public class Contract {
-    private String contract;
+    private String id;//合约id
+    private String contract;//合约名称
     private String variety;
     private String newPic;
     private String upDown;

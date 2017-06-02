@@ -1,7 +1,10 @@
 package com.example.fdi.fdiapplication.utils;
 
-import org.apache.commons.compress.compressors.bzip2.BZip2CompressorInputStream;
-import org.apache.commons.compress.compressors.bzip2.BZip2CompressorOutputStream;
+
+import android.util.Base64;
+
+import org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream;
+import org.apache.commons.compress.compressors.gzip.GzipCompressorOutputStream;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -13,15 +16,13 @@ import java.io.OutputStream;
 
 /**
  * 压缩与解压缩算法
- * @author Moyi
  *
+ * @author Moyi
  */
-public class ZIPUtilFinal 
-{
+public class ZIPUtilFinal {
 
-    public static final int BUFFER = 1024;
-    public static final CharSequence EXT = ".bz2";
-
+    public static final int BUFFER = 4096;
+    public static final CharSequence EXT = ".gz";
 
 
     /**
@@ -31,14 +32,13 @@ public class ZIPUtilFinal
      * @return
      * @throws Exception
      */
-    public static byte[] compress(byte[] data) throws Exception {
-        ByteArrayInputStream bais = new ByteArrayInputStream(data);
+    public static String compressByString(String data) throws Exception {
+        ByteArrayInputStream bais = new ByteArrayInputStream(data.getBytes("UTF-8"));
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
+        // 压缩
         compress(bais, baos);
-
-        byte[] output = baos.toByteArray();
-
+        String output = Base64.encodeToString(baos.toByteArray(),Base64.DEFAULT);
         baos.flush();
         baos.close();
 
@@ -61,8 +61,7 @@ public class ZIPUtilFinal
      * 文件压缩
      *
      * @param file
-     * @param delete
-     *            是否删除原始文件
+     * @param delete 是否删除原始文件
      * @throws Exception
      */
     public static void compress(File file, boolean delete) throws Exception {
@@ -90,16 +89,13 @@ public class ZIPUtilFinal
     public static void compress(InputStream is, OutputStream os)
             throws Exception {
 
-        BZip2CompressorOutputStream gos = new BZip2CompressorOutputStream(os);
+        GzipCompressorOutputStream gos = new GzipCompressorOutputStream(os);
 
         int count;
         byte data[] = new byte[BUFFER];
         while ((count = is.read(data, 0, BUFFER)) != -1) {
             gos.write(data, 0, count);
         }
-
-        gos.finish();
-
         gos.flush();
         gos.close();
     }
@@ -118,8 +114,7 @@ public class ZIPUtilFinal
      * 文件压缩
      *
      * @param path
-     * @param delete
-     *            是否删除原始文件
+     * @param delete 是否删除原始文件
      * @throws Exception
      */
     public static void compress(String path, boolean delete) throws Exception {
@@ -134,24 +129,23 @@ public class ZIPUtilFinal
      * @return
      * @throws Exception
      */
-    public static byte[] decompress(byte[] data) throws Exception {
-        ByteArrayInputStream bais = new ByteArrayInputStream(data);
+    public static String decompressByString(String data) throws Exception {
+        ByteArrayInputStream bais = new ByteArrayInputStream(Base64.decode(data,Base64.DEFAULT));
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
         // 解压缩
 
         decompress(bais, baos);
 
-        data = baos.toByteArray();
+        String temp = baos.toString("UTF-8");
 
         baos.flush();
         baos.close();
 
         bais.close();
 
-        return data;
+        return temp;
     }
-
 
     /**
      * 文件解压缩
@@ -167,8 +161,7 @@ public class ZIPUtilFinal
      * 文件解压缩
      *
      * @param file
-     * @param delete
-     *            是否删除原始文件
+     * @param delete 是否删除原始文件
      * @throws Exception
      */
     public static void decompress(File file, boolean delete) throws Exception {
@@ -195,7 +188,7 @@ public class ZIPUtilFinal
     public static void decompress(InputStream is, OutputStream os)
             throws Exception {
 
-        BZip2CompressorInputStream gis = new BZip2CompressorInputStream(is);
+        GzipCompressorInputStream gis = new GzipCompressorInputStream(is);
 
         int count;
         byte data[] = new byte[BUFFER];
@@ -206,13 +199,13 @@ public class ZIPUtilFinal
         gis.close();
     }
 
-
     /**
      * 文件解压缩
      *
      * @param path
      * @throws Exception
-     */static void decompress(String path) throws Exception {
+     */
+    public static void decompress(String path) throws Exception {
         decompress(path, true);
     }
 
@@ -220,8 +213,7 @@ public class ZIPUtilFinal
      * 文件解压缩
      *
      * @param path
-     * @param delete
-     *            是否删除原始文件
+     * @param delete 是否删除原始文件
      * @throws Exception
      */
     public static void decompress(String path, boolean delete) throws Exception {

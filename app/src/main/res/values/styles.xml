@@ -30,5 +30,107 @@
         <item name="android:windowEnterAnimation">@anim/actionsheet_dialog_in</item>
         <item name="android:windowExitAnimation">@anim/actionsheet_dialog_out</item>
     </style>
-
+    <style name="login_image">
+        <item name="android:background">@color/theme_background</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:scaleType">fitXY</item>
+    </style>
+    <style name="login_layout_edit_text_layout">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">10.0dip</item>
+    </style>
+    <style name="horizontal_divider">
+        <item name="android:background">@color/window_border</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">1dip</item>
+    </style>
+    <style name="login_layout_edit_text">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:background">@color/theme_white</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">45.0dip</item>
+    </style>
+    <style name="login_account_image">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_width">47.0dip</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:src">@mipmap/ic_person_main</item>
+    </style>
+    <style name="login_vertical_divider">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:background">@color/window_border</item>
+        <item name="android:layout_width">0.5dip</item>
+        <item name="android:layout_height">35.0dip</item>
+    </style>
+    <style name="login_edit_text_account" parent="@style/login_edit_text">
+        <item name="android:hint">@string/login_hint_username</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    <style name="login_edit_text">
+        <item name="android:textSize">15.0sp</item>
+        <item name="android:textColorHint">@color/text_hint</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">@null</item>
+        <item name="android:paddingLeft">10.0dip</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+    </style>
+    <style name="login_password_image">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_width">47.0dip</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:src">@mipmap/ic_psd_main</item>
+    </style>
+    <style name="login_edit_text_password" parent="@style/login_edit_text">
+        <item name="android:hint">@string/login_hint_password</item>
+        <item name="android:password">true</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    <style name="login_layout_login">
+        <item name="android:background">@color/theme_background</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">0.0dip</item>
+        <item name="android:layout_weight">1.0</item>
+    </style>
+    <style name="login_button_action">
+        <item name="android:textSize">15.0sp</item>
+        <item name="android:textColor">@color/theme_title</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/selector_button_blue</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">40.0dip</item>
+        <item name="android:layout_marginLeft">40.0dip</item>
+        <item name="android:layout_marginRight">40.0dip</item>
+        <item name="android:text">@string/login_title</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+    <style name="login_check_box_remember_account" parent="@style/login_check_box">
+        <item name="android:text">@string/login_action_username</item>
+    </style>
+    <style name="login_custom_check_box">
+        <item name="android:button">@drawable/selector_login_new_checkbox</item>
+    </style>
+    <style name="login_check_box" parent="@style/login_custom_check_box">
+        <item name="android:textSize">12.5sp</item>
+        <item name="android:textColor">@color/theme_blue</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">46.0dip</item>
+        <item name="android:checked">false</item>
+    </style>
+    <style name="login_check_box_remember_password" parent="@style/login_check_box">
+        <item name="android:text">@string/login_action_password</item>
+    </style>
+    <style name="login_connect_text">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textColorHint">@color/text_hint</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:background">@color/theme_background</item>
+        <item name="android:paddingTop">10.0dip</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">42.0dip</item>
+    </style>
 </resources>

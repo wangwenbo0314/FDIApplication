@@ -8,6 +8,7 @@ import com.example.fdi.fdiapplication.myenum.EventType;
 import com.example.fdi.fdiapplication.utils.MessageHelperFinal;
 import com.example.fdi.fdiapplication.utils.NioClientHelper;
 import com.example.fdi.fdiapplication.utils.ResponseEventArgs;
+import com.example.fdi.fdiapplication.utils.ZIPUtilFinal;
 
 /**
  * 事件监听 实现类
@@ -25,30 +26,6 @@ public class EventListener implements SystemListener {
             case loginrsp:
                 Loginrsp.LoginrspListener(SystemEvent);
                 break;
-            case onInMoneyrsp:
-                NioClientHelper.getNioClientHelperInstance().SendMainMessageASync(MessageHelperFinal.IGetMessage(SystemEvent.getResponseEventArgs().EXResponseBody));
-                if (SystemEvent.getResponseEventArgs().Status == ResponseEventArgs.StatusCode.Success) {
-//				int result=userServiceImpl.mydao.updateDeposit(SystemEvent.getResponseEventArgs().ResponseBody);//依赖注入异常
-//				if (result!=0)
-//				{
-//					Comet comet=new Comet();
-//			        comet.setMsgCount("inMoneyrsp SUCCESS");
-//			        new CometUtil().pushToALL(comet);
-//				}else
-//				{
-//					Comet comet=new Comet();
-//			        comet.setMsgCount("inMoneyrsp FAIL");
-//			        new CometUtil().pushToALL(comet);
-//				}
-
-                } else {
-//				Comet comet=new Comet();
-//		        comet.setMsgCount("inMoneyrsp FAIL");
-//		        new CometUtil().pushToALL(comet);
-                }
-                //收到消息回调
-
-                break;
             case checkrsp:
                 NioClientHelper.getNioClientHelperInstance().SendMainMessageASync(MessageHelperFinal.IGetMessage(SystemEvent.getResponseEventArgs().EXResponseBody));
                 if (SystemEvent.getResponseEventArgs().Status == ResponseEventArgs.StatusCode.Success) {
@@ -57,8 +34,23 @@ public class EventListener implements SystemListener {
                 break;
             case pushrsp:
                 if(SystemEvent.getResponseEventArgs().Status==ResponseEventArgs.StatusCode.Success){
-                    Log.i("Tag018", "udp 检查成功！");
+                    Log.i("Tag20","方法已执行");
+                    try {
+                        Log.i("Tag018", ZIPUtilFinal.decompressByString(SystemEvent.getResponseEventArgs().ResponseBody));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
+                break;
+            case allstockinforsp:
+                if (SystemEvent.getResponseEventArgs().Status==ResponseEventArgs.StatusCode.Success){
+                    try {
+                        Log.i("Tag018", ZIPUtilFinal.decompressByString(SystemEvent.getResponseEventArgs().ResponseBody));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                break;
             default:
                 break;
         }

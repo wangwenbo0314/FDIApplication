@@ -1,10 +1,10 @@
 package com.example.fdi.fdiapplication.Services;
 
-import java.util.Enumeration;
-import java.util.Vector;
-
 import com.example.fdi.fdiapplication.myenum.EventType;
 import com.example.fdi.fdiapplication.utils.ResponseEventArgs;
+
+import java.util.Enumeration;
+import java.util.Vector;
 
 public class DataReciveEvent implements SystemEvent {
 
@@ -24,8 +24,6 @@ public class DataReciveEvent implements SystemEvent {
             type = EventType.heartbeatrsp;
         } else if (e.CommandName.equalsIgnoreCase("loginrsp")) {
             type = EventType.loginrsp;
-        } else if (e.CommandName.equalsIgnoreCase("onInMoneyrsp")) {
-            type = EventType.onInMoneyrsp;
         } else if (e.CommandName.equalsIgnoreCase("checkrsp")) {
             type = EventType.checkrsp;
         } else if (e.CommandName.equalsIgnoreCase("pushrsp")){

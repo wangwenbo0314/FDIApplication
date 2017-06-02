@@ -1,8 +1,5 @@
 package com.example.fdi.fdiapplication.utils;
 
-import android.content.Context;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
 import android.util.Log;
 
 import com.example.fdi.fdiapplication.Services.DataReciveEvent;
@@ -23,7 +20,7 @@ import java.util.TimerTask;
  */
 
 public class UDPClientHelper {
-    public String HostIP = "101.37.86.94";//获取通信目标IP
+    public String HostIP = "47.52.93.27";//获取通信目标IP
     int port = 50608;//获取端口号
     private static UDPClientHelper udpHelper = new UDPClientHelper();//单例
     private DatagramPacket dpRcv = null, dpSend = null;//接受和发送的包
@@ -33,6 +30,7 @@ public class UDPClientHelper {
     private boolean IsConnection = false;//是否连接
 
     public UDPClientHelper() {
+        Log.i("info","初始化UDP");
         IsConnection = Init();
     }//构造函数
 
@@ -65,15 +63,24 @@ public class UDPClientHelper {
      */
     private void UnInit() {
         heartBeatTimer.cancel();
-        if (threadReceive1 != null)
+        heartBeatTimer.purge();
+        heartBeatTimer=null;
+        if (threadReceive1 != null) {
             threadReceive1.interrupt();
-        if (threadReceive2 != null)
+            threadReceive1 = null;
+        }
+        if (threadReceive2 != null) {
             threadReceive2.interrupt();
-        if (threadReceive3 != null)
+            threadReceive2 = null;
+        }
+        if (threadReceive3 != null) {
             threadReceive3.interrupt();
-        if (clientsocket != null)
+            threadReceive3 = null;
+        }
+        if (clientsocket != null) {
             clientsocket.close();
-        clientsocket = null;
+            clientsocket = null;
+        }
     }
 
     /*
@@ -99,43 +106,30 @@ public class UDPClientHelper {
                 public void run() {
                     SendHeartBeatMessage();
                 }
-            }, 0, 30000);
+            }, 0, 10000);
 
             if (port_super != 0) {
                 clientsocket = new DatagramSocket();
-                clientsocket.bind(new InetSocketAddress("101.37.86.94", port_super));//后期修改
+                clientsocket.bind(new InetSocketAddress("47.52.93.27", port_super));//后期修改
             } else {
                 clientsocket = new DatagramSocket();
             }
             clientsocket.connect(new InetSocketAddress(HostIP, port));
-            threadReceive1 = new Thread(new Runnable() {
-                public void run() {
-                    reciveData();
-                }
-            });
+            threadReceive1 = new Thread(() -> reciveData());
             threadReceive1.start();
 
-            threadReceive2 = new Thread(new Runnable() {
-                public void run() {
-                    reciveData();
-                }
-            });
+            threadReceive2 = new Thread(() -> reciveData());
             threadReceive2.start();
 
-            threadReceive3 = new Thread(new Runnable() {
-                public void run() {
-                    reciveData();
-                }
-            });
+            threadReceive3 = new Thread(() -> reciveData());
             threadReceive3.start();
 
             networkGood = true;
 
             if (port_super == 0) {
                 port_super = clientsocket.getLocalPort();
-            }
 
-            SendCheckMessage();
+            }
 
             return true;
 
@@ -146,28 +140,12 @@ public class UDPClientHelper {
         }
 
     }
-
-
-    private void SendCheckMessage() {
-        try {
-            SendMainMessageASync(MessageHelperFinal.CheckMessage("|", String.valueOf(clientsocket.getLocalPort())));
-            Log.i("Tag02", "已经发送check检查！" + "本地端口：" + clientsocket.getLocalPort());
-        } catch (Exception e)
-
-        {
-            synchronized (networkGoodObject) {
-                networkGood = false;
-            }
-            e.printStackTrace();
-        }
-    }
-
-
     private void SendHeartBeatMessage() {
         try {
             synchronized (networkGoodObject) {
                 if (networkGood) {
                     networkGood = SendMessage(MessageHelperFinal.HeartBeatUDPMessage(String.valueOf(clientsocket.getLocalPort())));
+                    Log.i("Tag23","UDP方法已执行");
                 } else {
                     synchronized (SendSocket) {
                         UnInit();
@@ -198,7 +176,8 @@ public class UDPClientHelper {
                 dpRcv = new DatagramPacket(msgRcv, msgRcv.length);
                 clientsocket.receive(dpRcv);
                 receiveMessage = new String(dpRcv.getData(), dpRcv.getOffset(), dpRcv.getLength());
-                Log.i("Tag12", receiveMessage);
+//                Log.i("Tag12", receiveMessage);
+                Log.i("Tag019", receiveMessage());
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -219,7 +198,7 @@ public class UDPClientHelper {
             if (receiveData == "") {
                 continue;
             } else {
-                Log.i("Tag01", receiveMessage());
+                Log.i("Tag019", receiveMessage());
                 SystemEvent systemEvent = new DataReciveEvent(new ResponseEventArgs(receiveData));
                 SystemListener systemListener = new EventListener();
                 systemEvent.addDemoListener(systemListener);
@@ -235,11 +214,7 @@ public class UDPClientHelper {
      * @param message
      */
     public void SendMainMessageASync(final String message) {
-        new Thread(new Runnable() {
-            public void run() {
-                SendMessage(message);
-            }
-        }).start();
+        new Thread(() -> SendMessage(message)).start();
     }
 
 
@@ -252,6 +227,7 @@ public class UDPClientHelper {
     private boolean SendMessage(String msg) {
         try {
             synchronized (SendSocket) {
+                msg=msg+"\r\n";
                 Log.i("Tag11", msg);
                 InetAddress serverAddr = InetAddress.getByName(HostIP);
                 dpSend = new DatagramPacket(msg.getBytes(), msg.getBytes().length, serverAddr, port);

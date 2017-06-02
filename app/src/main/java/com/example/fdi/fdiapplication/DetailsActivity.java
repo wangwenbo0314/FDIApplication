@@ -17,7 +17,6 @@ import com.example.fdi.fdiapplication.utils.UDPClientHelper;
 public class DetailsActivity extends AppCompatActivity implements View.OnClickListener {
     ActivityDetailsBinding binding;
     UDPClientHelper udpClientHelper;
-    Thread thread;
     private Dialog dialog;
     private View inflate;
     @Override
@@ -29,13 +28,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void initView() {
-        thread=new Thread(new Runnable() {
-            @Override
-            public void run() {
-                udpClientHelper= UDPClientHelper.getUDPClientHelperInstance();
-            }
-        });
-        thread.start();
+
     }
 
     private void setTabButLister() {
@@ -53,7 +46,6 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     protected void onDestroy() {
-        udpClientHelper.Close();
         super.onDestroy();
     }
 }

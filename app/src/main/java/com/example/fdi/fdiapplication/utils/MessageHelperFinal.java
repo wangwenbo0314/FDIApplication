@@ -13,7 +13,7 @@ public class MessageHelperFinal
 	}
 	public static String HeartBeatUDPMessage(String iport)
 	{
-		return "LoginBeat "+GetMacAddr_Local.GetMacLocal()+ " | " + iport;
+		return "LoginBeat "+GetMacAddr_Local.getMacAddress()+ "|" + iport;
 	}
 
 	/**
@@ -34,7 +34,7 @@ public class MessageHelperFinal
 	 */
 	public static String CheckMessage(String secret,String iport) 
 	{
-	    return "Check "+secret+" "+System.currentTimeMillis()+" "+GetMacAddr_Local.GetMacLocal()+"|"+iport;
+	    return "Check "+secret+" "+System.currentTimeMillis()+" "+GetMacAddr_Local.getMacAddress()+"|"+iport;
 	}
 
 	/**

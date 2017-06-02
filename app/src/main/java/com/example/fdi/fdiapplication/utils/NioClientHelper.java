@@ -22,36 +22,17 @@ import java.util.TimerTask;
  */
 
 public class NioClientHelper {
-    /**
-     * 获取通信目标IP
-     */
-    public String HostIP = "101.37.86.94";
 
-    /**
-     * 获取端口号
-     */
-    int port = 50611;
-    /**
-     * 单例
-     */
-    private static NioClientHelper ncHelper = new NioClientHelper();
-
+    public String HostIP = "47.52.93.27";//获取通信目标IP
+    int port = 50611;//获取端口号
+    private static NioClientHelper ncHelper = new NioClientHelper();//单例
     boolean networkGood = true;
     Object networkGoodObject = new Object();
-    /**
-     * 是否连接
-     */
-    private boolean IsConnection = false;
-
-    /**
-     * 构造函数
-     */
+    private boolean IsConnection = false;//是否连接
     public NioClientHelper() {
         IsConnection = Init();
-    }
-
-
-    /**
+    }//构造函数
+    /*
      * 获取是否连接
      *
      * @return 是否链接
@@ -59,9 +40,7 @@ public class NioClientHelper {
     public boolean GetIsConnection() {
         return IsConnection;
     }
-
-
-    /**
+    /*
      * 析构函数
      */
     @Override
@@ -69,38 +48,43 @@ public class NioClientHelper {
         Close();
         super.finalize();
     }
-
-
-    /**
+    /*
      * 关闭连接方法！
      */
     public void Close() {
         UnInit();
     }
-
-
-    /**
+    /*
      * 反向初始化
      */
     private void UnInit() {
         heartBeatTimer.cancel();
+        heartBeatTimer.purge();
+        heartBeatTimer=null;
         try {
             if (sr != null) sr.close();
-            if (threadReceive1 != null)
+            if (threadReceive1 != null) {
                 threadReceive1.interrupt();
-            if (threadReceive2 != null)
+                threadReceive1 = null;
+            }
+            if (threadReceive2 != null) {
                 threadReceive2.interrupt();
-            if (threadReceive3 != null)
+                threadReceive2 = null;
+            }
+            if (threadReceive3 != null) {
                 threadReceive3.interrupt();
-            if (clientsocket != null)
+                threadReceive3 = null;
+            }
+            if (clientsocket != null) {
                 clientsocket.close();
-            clientsocket = null;
+                clientsocket = null;
+            }
             if (sw != null) sw.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    /**
+    /*
      * 单例模式获取NioClientHelper实例
      *
      * @return NioClientHelper
@@ -124,11 +108,11 @@ public class NioClientHelper {
                 public void run() {
                     SendHeartBeatMessage();
                 }
-            }, 0, 30000);
+            }, 0, 10000);
 
             if (port_super != 0) {
                 clientsocket = new Socket();
-                clientsocket.bind(new InetSocketAddress("101.37.86.94", port_super));//后期修改
+                clientsocket.bind(new InetSocketAddress("47.52.93.27", port_super));//后期修改
             } else {
                 clientsocket = new Socket();
             }
@@ -137,25 +121,13 @@ public class NioClientHelper {
             sr = new BufferedReader(new InputStreamReader(clientsocket.getInputStream()));
             sw = new BufferedWriter(new OutputStreamWriter(clientsocket.getOutputStream()));
 
-            threadReceive1 = new Thread(new Runnable() {
-                public void run() {
-                    reciveData();
-                }
-            });
+            threadReceive1 = new Thread(() -> reciveData());
             threadReceive1.start();
 
-            threadReceive2 = new Thread(new Runnable() {
-                public void run() {
-                    reciveData();
-                }
-            });
+            threadReceive2 = new Thread(() -> reciveData());
             threadReceive2.start();
 
-            threadReceive3 = new Thread(new Runnable() {
-                public void run() {
-                    reciveData();
-                }
-            });
+            threadReceive3 = new Thread(() -> reciveData());
             threadReceive3.start();
 
             networkGood = true;
@@ -197,6 +169,7 @@ public class NioClientHelper {
             synchronized (networkGoodObject) {
                 if (networkGood) {
                     networkGood = SendMessage(MessageHelperFinal.HeartBeatMessage("&"));
+                    Log.i("Tag22","TCP方法已执行");
                 } else {
                     synchronized (SendSocket) {
                         UnInit();
@@ -261,11 +234,7 @@ public class NioClientHelper {
      * @param message
      */
     public void SendMainMessageASync(final String message) {
-        new Thread(new Runnable() {
-            public void run() {
-                SendMessage(message);
-            }
-        }).start();
+        new Thread(() -> SendMessage(message)).start();
     }
 
 

@@ -1,6 +1,5 @@
 package com.example.fdi.fdiapplication.model;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -24,7 +23,6 @@ public class Loginrsp {
 
     public static void LoginrspListener(SystemEvent systemEvent){
         NioClientHelper.getNioClientHelperInstance().SendMainMessageASync(MessageHelperFinal.IGetMessage(systemEvent.getResponseEventArgs().EXResponseBody));
-        Log.i("Tag07", systemEvent.getResponseEventArgs().EXResponseBody);
         if (systemEvent.getResponseEventArgs().Status == ResponseEventArgs.StatusCode.Success) {
             Intent intent = new Intent(context, MarketActivity.class);
             context.startActivity(intent);
