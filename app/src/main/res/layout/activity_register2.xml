@@ -1,9 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.fdi.fdiapplication.Register2Activity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/ic_bg_main"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:gravity="center">
+
+
+
+            <RadioGroup
+                android:id="@+id/radiogroup_server_rg2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checkedButton="@+id/simu_rg2"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/firm_rg2"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
+                    android:layout_weight="1.0"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="实盘"
+                    android:textColor="@drawable/selector_marketchart_textcolor_bluewhite" />
+
+
+                <RadioButton
+                    android:id="@id/simu_rg2"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
+                    android:layout_weight="1.0"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:background="@mipmap/ic_bg_but"
+                    android:text="模拟"
+                    android:textColor="@drawable/selector_marketchart_textcolor_bluewhite" />
+            </RadioGroup>
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@mipmap/ic_person_main" />
+
+            <EditText
+                android:id="@+id/usercode_rg2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="10.0dip"
+                android:background="@null"
+                android:ems="10"
+                android:hint="请输入验证码"
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                android:textColor="@color/theme_white"
+                android:textColorHint="@color/theme_white"
+                android:textSize="14.0sp" />
+            <Button
+                android:id="@+id/gitcode_rg2"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:text="获取验证码"/>
+        </LinearLayout>
+        <View
+            style="@style/horizontal_divider"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="10dp" />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="54dp"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@mipmap/ic_person_main" />
+
+            <EditText
+                android:id="@+id/usernickname_rg2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="10.0dip"
+                android:background="@null"
+                android:ems="10"
+                android:hint="请输入昵称（10位以内字母、汉子、数字）"
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                android:textColor="@color/theme_white"
+                android:textColorHint="@color/theme_white"
+                android:textSize="14.0sp" />
+        </LinearLayout>
+
+        <View
+            style="@style/horizontal_divider"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="10dp" />
+        <Button
+            android:id="@+id/register_rg2"
+            style="@style/login_button_action"
+            android:layout_height="50dp"
+            android:layout_marginTop="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/layout_password_option"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="注    册"
+            android:background="@drawable/selector_button_login" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@null"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:src="@mipmap/ic_logo_main" />
+    </LinearLayout>
+
+</layout>
+

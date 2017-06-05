@@ -3,13 +3,10 @@ package com.example.fdi.fdiapplication;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 
-import com.example.fdi.fdiapplication.databinding.ActivityDetailsBinding;
 import com.example.fdi.fdiapplication.databinding.ActivityRegisterBinding;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
@@ -24,9 +21,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
      *初始化控件，并绑定监听器
      */
     private void initView() {
-        binding.regMoniBut.setOnClickListener(this);
-        binding.regShipanBut.setOnClickListener(this);
-        binding.regNextBut.setOnClickListener(this);
+        binding.firmRg.setOnClickListener(this);
+        binding.simuRg.setOnClickListener(this);
+        binding.nextRg.setOnClickListener(this);
     }
     /*
      *对于按钮进行监听，并执行相应流程
@@ -35,21 +32,18 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.reg_shipan_but:
-                binding.regShipanView.setVisibility(View.VISIBLE);
-                binding.regShipanBut.setTextColor(Color.parseColor("#3683D7"));
-                binding.regMoniBut.setTextColor(Color.parseColor("#ffffff"));
-                binding.regMoniView.setVisibility(View.INVISIBLE);
+            case R.id.firm_rg:
+                binding.firmRg.setBackground(getResources().getDrawable(R.mipmap.ic_bg_but));
+                binding.simuRg.setBackground(null);
                 break;
-            case R.id.reg_moni_but:
-                binding.regShipanView.setVisibility(View.INVISIBLE);
-                binding.regShipanBut.setTextColor(Color.parseColor("#ffffff"));
-                binding.regMoniBut.setTextColor(Color.parseColor("#3683D7"));
-                binding.regMoniView.setVisibility(View.VISIBLE);
+            case R.id.simu_rg:
+                binding.simuRg.setBackground(getResources().getDrawable(R.mipmap.ic_bg_but));
+                binding.firmRg.setBackground(null);
                 break;
-            case R.id.reg_next_but:
+            case R.id.next_rg:
                 Intent intent = new Intent(this,Register2Activity.class);
                 startActivity(intent);
+                finish();
                 break;
         }
     }

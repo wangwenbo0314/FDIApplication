@@ -2,7 +2,6 @@
     <string name="app_name">FDI Application</string>
     <string name="login_hint_username">请输入注册的号码</string>
     <string name="login_hint_password">请输入密码</string>
-    <string name="login_title">登 录</string>
     <string name="login_action_username">记住账号</string>
     <string name="login_action_password">记住密码</string>
 </resources>

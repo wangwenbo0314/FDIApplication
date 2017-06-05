@@ -4,135 +4,106 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@mipmap/shipan"
+        android:background="@mipmap/ic_bg_main"
         android:orientation="vertical">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center"
+            android:layout_height="150dp"
+            android:gravity="center">
 
-            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/fdi_text"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="5"
-                android:gravity="center_vertical"
-                android:text="FDI"
-                android:textColor="#ffffff"
-                android:textSize="40sp" />
 
-            <LinearLayout
-                android:id="@+id/main_group"
+            <RadioGroup
+                android:id="@+id/radiogroup_server_rg"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:checkedButton="@+id/simu_rg"
                 android:orientation="horizontal">
 
-                <LinearLayout
+                <RadioButton
+                    android:id="@+id/firm_rg"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:layout_height="35dp"
+                    android:layout_weight="1.0"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="实盘"
+                    android:textColor="@drawable/selector_marketchart_textcolor_bluewhite" />
 
-                    <Button
-                        android:id="@+id/reg_shipan_but"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:background="@null"
-                        android:checked="true"
-                        android:gravity="center"
-                        android:text="实盘"
-                        android:textColor="#3683D7" />
 
-                    <View
-                        android:id="@+id/reg_shipan_view"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="0.03"
-                        android:background="#3683D7" />
-                </LinearLayout>
-
-                <LinearLayout
+                <RadioButton
+                    android:id="@id/simu_rg"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <Button
-                        android:id="@+id/reg_moni_but"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:background="@null"
-                        android:gravity="center"
-                        android:text="模拟"
-                        android:textColor="#ffffff" />
-
-                    <View
-                        android:id="@+id/reg_moni_view"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="0.03"
-                        android:background="#3683D7"
-                        android:visibility="invisible" />
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2.5"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="16dp"
-                    android:src="@mipmap/ic_launcher" />
-
-                <EditText
-                    android:id="@+id/reg_name_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@null"
-                    android:hint="请输入手机号"
-                    android:lines="1"
-                    android:paddingLeft="10dp"
-                    android:textColorHint="#ffffff" />
-            </LinearLayout>
+                    android:layout_height="35dp"
+                    android:layout_weight="1.0"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:background="@mipmap/ic_bg_but"
+                    android:text="模拟"
+                    android:textColor="@drawable/selector_marketchart_textcolor_bluewhite" />
+            </RadioGroup>
+        </RelativeLayout>
+        <LinearLayout
+            android:id="@+id/rg_form_userphone"
+            android:layout_width="fill_parent"
+            android:layout_height="54dp"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="1.5dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:background="#818488" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@mipmap/ic_person_main" />
 
+            <EditText
+                android:id="@+id/userphone_rg"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="10.0dip"
+                android:background="@null"
+                android:ems="10"
+                android:hint="请输入手机号码"
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                android:textColor="@color/theme_white"
+                android:textColorHint="@color/theme_white"
+                android:textSize="14.0sp" />
         </LinearLayout>
 
-        <LinearLayout
+        <View
+            android:id="@+id/view_userphone_rg"
+            style="@style/horizontal_divider"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@id/login_form_username"
+            android:layout_marginBottom="10dp" />
+        <Button
+            android:id="@+id/next_rg"
+            style="@style/login_button_action"
+            android:layout_height="50dp"
+            android:layout_marginTop="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/layout_password_option"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="下    一    步"
+            android:background="@drawable/selector_button_login" />
+        <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.3">
-            <Button
-                android:id="@+id/reg_next_but"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:background="@drawable/psdbut"
-                android:text="下一步"
-                android:textColor="#ffffff"/>
-        </LinearLayout>
+            android:background="@null"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:src="@mipmap/ic_logo_main" />
     </LinearLayout>
 
 </layout>

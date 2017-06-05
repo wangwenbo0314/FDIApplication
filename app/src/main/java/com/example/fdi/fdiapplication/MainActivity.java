@@ -8,6 +8,7 @@ package com.example.fdi.fdiapplication;
  */
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -85,14 +86,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //点击实盘标签
             case R.id.firm:
                 binding.actionLogin.setText("登    陆    实    盘");
-                binding.layoutContainer.setBackground(getResources().getDrawable(R.mipmap.ic_bg_main));
+//                binding.layoutContainer.setBackground(getResources().getDrawable(R.mipmap.ic_bg_main));
                 binding.firm.setBackground(getResources().getDrawable(R.mipmap.ic_bg_but));
                 binding.simu.setBackground(null);
                 break;
             //点击模拟标签
             case R.id.simu:
                 binding.actionLogin.setText("登    陆    模    拟");
-                binding.layoutContainer.setBackground(getResources().getDrawable(R.mipmap.ic_bg_main));
+//                binding.layoutContainer.setBackground(getResources().getDrawable(R.mipmap.ic_bg_main));
                 binding.simu.setBackground(getResources().getDrawable(R.mipmap.ic_bg_but));
                 binding.firm.setBackground(null);
                 break;
@@ -102,15 +103,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 new Loginrsp(this);
                 break;
             case R.id.register:
-                udpClientHelper.SendMainMessageASync("FirstLogin ");
+                Intent intent = new Intent(this ,RegisterActivity.class);
+                startActivity(intent);
         }
-    }
-
-    @Override
-    protected void onStop() {
-        ncHelper.Close();
-        udpClientHelper.Close();
-        super.onStop();
     }
 
     @Override
