@@ -2,7 +2,7 @@ package com.example.fdi.fdiapplication.model;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
+import android.widget.Toast;
 
 import com.example.fdi.fdiapplication.MarketActivity;
 import com.example.fdi.fdiapplication.Services.SystemEvent;
@@ -26,9 +26,8 @@ public class Loginrsp {
         if (systemEvent.getResponseEventArgs().Status == ResponseEventArgs.StatusCode.Success) {
             Intent intent = new Intent(context, MarketActivity.class);
             context.startActivity(intent);
-            Log.i("Tag04", "登陆成功");
         } else {
-            Log.i("Tag05", "登陆失败");
+            Toast.makeText(context,"账号或密码错误，请重新输入",Toast.LENGTH_SHORT).show();
         }
     }
 }

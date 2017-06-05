@@ -19,8 +19,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.example.fdi.fdiapplication.databinding.ActivityMainBinding;
-import com.example.fdi.fdiapplication.model.Loginrsp;
-import com.example.fdi.fdiapplication.utils.MessageHelperFinal;
 import com.example.fdi.fdiapplication.utils.NioClientHelper;
 import com.example.fdi.fdiapplication.utils.UDPClientHelper;
 
@@ -99,8 +97,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             //点击登陆标签，跳转到对应的实盘或模拟界面
             case R.id.action_login:
-                ncHelper.SendMainMessageASync(MessageHelperFinal.LoginMessage("029005076", "123456"));
-                new Loginrsp(this);
+//                String userName=binding.username.getText().toString();
+//                String userPassword=binding.password.getText().toString();
+////                ncHelper.SendMainMessageASync(MessageHelperFinal.LoginMessage(userName,userPassword));
+//                ncHelper.SendMainMessageASync(MessageHelperFinal.LoginMessage("029005076","123456"));
+//                new Loginrsp(this);
+                Intent intent2 = new Intent(this ,MarketActivity.class);
+                startActivity(intent2);
                 break;
             //跳转注册页面
             case R.id.register:

@@ -17,13 +17,13 @@ import java.util.List;
  * 数据处理adapter
  */
 
-public class DataAdapter extends BaseAdapter {
+public class MarketDataAdapter extends BaseAdapter {
 
     private LayoutInflater mInflater;
     private List<Contract> list;
     private HVListView mListView;
 
-    public DataAdapter(LayoutInflater mInflater, HVListView mListView,List<Contract> list) {
+    public MarketDataAdapter(LayoutInflater mInflater, HVListView mListView, List<Contract> list) {
         this.mInflater = mInflater;
         this.mListView = mListView;
         this.list=list;
@@ -31,13 +31,13 @@ public class DataAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return list.size();//固定显示50行数据
+        return list.size();
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.item2, null);
+            convertView = mInflater.inflate(R.layout.market_item2, null);
         }
         ((TextView) convertView.findViewById(R.id.item1 )).setText(list.get(position).getContract());
         ((TextView) convertView.findViewById(R.id.item2 )).setText(list.get(position).getVariety());

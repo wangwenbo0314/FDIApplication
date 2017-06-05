@@ -112,7 +112,7 @@
 
                 </LinearLayout>
 
-                <include layout="@layout/item" />
+                <include layout="@layout/market_item" />
 
                 <com.example.fdi.fdiapplication.view.HVListView
                     android:id="@+id/market_list"

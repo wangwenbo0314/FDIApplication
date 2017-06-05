@@ -1,14 +1,13 @@
 package com.example.fdi.fdiapplication;
 
-import android.app.Dialog;
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import com.example.fdi.fdiapplication.databinding.ActivityDetailsBinding;
-import com.example.fdi.fdiapplication.utils.UDPClientHelper;
+import com.example.fdi.fdiapplication.utils.PopViewUtil;
 
 /**
  * 单个合约详情页面
@@ -16,9 +15,8 @@ import com.example.fdi.fdiapplication.utils.UDPClientHelper;
 
 public class DetailsActivity extends AppCompatActivity implements View.OnClickListener {
     ActivityDetailsBinding binding;
-    UDPClientHelper udpClientHelper;
-    private Dialog dialog;
-    private View inflate;
+    PopViewUtil popViewUtils;
+    View menuView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +26,8 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void initView() {
-
+        menuView= LayoutInflater.from(this).inflate(R.layout.activity_transaction_list, null);
+        popViewUtils = new PopViewUtil(R.layout.activity_transaction_list,this);
     }
 
     private void setTabButLister() {
@@ -39,8 +38,10 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.knockdown_image:
-                Intent intent = new Intent(this,TransactionListActivity.class);
-                startActivity(intent);
+                popViewUtils.initPopView(menuView);
+                //点击某控件控制显示与隐藏
+                popViewUtils.changePopupWindowState(binding.knockdownImage);
+                break;
         }
     }
 

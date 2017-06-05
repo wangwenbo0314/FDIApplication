@@ -132,4 +132,10 @@
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">42.0dip</item>
     </style>
+    <!-- PopupWindow窗口动画 -->
+    <style name="MenuAnimationFade">
+        <item name="android:windowEnterAnimation">@anim/actionsheet_dialog_in</item>
+        <item name="android:windowExitAnimation">@anim/actionsheet_dialog_out</item>
+    </style>
+
 </resources>

@@ -1,93 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.fdi.fdiapplication.TransactionListActivity"
-    >
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@drawable/dialog"
-        >
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="30dp"
-
-            android:background="#B7B7B7">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
             <TextView
+                android:id="@+id/contract_detail"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:textColor="#ffffff"
-                android:background="#2A384A"
                 android:layout_margin="2dp"
                 android:text="合约"/>
             <TextView
+                android:id="@+id/orientation_detail"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:textColor="#ffffff"
-                android:background="#2A384A"
                 android:layout_margin="2dp"
                 android:gravity="center"
                 android:text="方向"/>
             <TextView
+                android:id="@+id/kaiping_detail"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:textColor="#ffffff"
-                android:background="#2A384A"
                 android:layout_margin="2dp"
                 android:text="开平"/>
             <TextView
+                android:id="@+id/number_detail"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:textColor="#ffffff"
-                android:background="#2A384A"
                 android:layout_margin="2dp"
                 android:text="手数"/>
             <TextView
+                android:id="@+id/price_detail"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:textColor="#ffffff"
-                android:background="#2A384A"
                 android:layout_margin="2dp"
                 android:text="价格"/>
             <TextView
+                android:id="@+id/time_detail"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:textColor="#ffffff"
-                android:background="#2A384A"
                 android:layout_margin="2dp"
                 android:gravity="center"
                 android:text="时间"/>
-
-        </LinearLayout>
-        <TextView
-            android:id="@+id/textview_tran"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="暂无成交记录"
-            android:visibility="gone"
-            android:gravity="center"
-            android:textColor="#ffffff"
-            />
-        <ListView
-            android:id="@+id/listview_tran"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </ListView>
-
-
-    </LinearLayout>
-
-</layout>
+</LinearLayout>

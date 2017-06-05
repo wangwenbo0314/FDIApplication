@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,12 +15,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
-import com.example.fdi.fdiapplication.adapter.DataAdapter;
+import com.example.fdi.fdiapplication.adapter.MarketDataAdapter;
 import com.example.fdi.fdiapplication.bean.Contract;
 import com.example.fdi.fdiapplication.databinding.ActivityMarketBinding;
-import com.example.fdi.fdiapplication.utils.NioClientHelper;
 import com.example.fdi.fdiapplication.view.HVListView;
 
 import java.util.ArrayList;
@@ -39,7 +36,7 @@ public class MarketActivity extends AppCompatActivity implements View.OnClickLis
     private LayoutInflater mInflater;//获取inflater对象
     private HVListView mListView;//获取listview对象
     List<Contract> list;//获取数据集合
-    DataAdapter dataAdapter;//创建adapter对象
+    MarketDataAdapter dataAdapter;//创建adapter对象
     Contract contract;
     Contract contract2;
     Contract contract3;
@@ -59,7 +56,7 @@ public class MarketActivity extends AppCompatActivity implements View.OnClickLis
     private void setListView() {
         mListView = binding.marketList;//初始化listview
         mListView.mListHead = (LinearLayout) findViewById(R.id.head);//设置列头
-        dataAdapter = new DataAdapter(mInflater, mListView, list);//设置数据
+        dataAdapter = new MarketDataAdapter(mInflater, mListView, list);//设置数据
         mListView.setAdapter(dataAdapter);//进行关联
     }
 
