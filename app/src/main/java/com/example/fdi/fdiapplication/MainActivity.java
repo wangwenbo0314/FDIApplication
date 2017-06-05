@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ActivityMainBinding binding;//布局banding对象；
     NioClientHelper ncHelper;//初始化TCP网络连接
     UDPClientHelper udpClientHelper;//初始化UDP网络连接
-    static Thread thread;
+    static Thread thread;//初始化网络
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,18 +43,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /*
-     * 功  能：新建异步对象，建立网络连接
-    */
+     * 新建异步对象，建立网络连接
+     */
     @SuppressLint("WrongConstant")
     private void netClint() {
         thread = new Thread(() -> {
             ncHelper = NioClientHelper.getNioClientHelperInstance();
             udpClientHelper=UDPClientHelper.getUDPClientHelperInstance();
-            isFristLogin();
+            isFristLogin();//第一次登陆需要对合约进行镜像
         });
         thread.start();
     }
-
+    /*
+     *判断是否为第一次登陆
+     */
     private void isFristLogin() {
         PackageInfo info = null;
         try {
@@ -86,14 +88,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //点击实盘标签
             case R.id.firm:
                 binding.actionLogin.setText("登    陆    实    盘");
-//                binding.layoutContainer.setBackground(getResources().getDrawable(R.mipmap.ic_bg_main));
                 binding.firm.setBackground(getResources().getDrawable(R.mipmap.ic_bg_but));
                 binding.simu.setBackground(null);
                 break;
             //点击模拟标签
             case R.id.simu:
                 binding.actionLogin.setText("登    陆    模    拟");
-//                binding.layoutContainer.setBackground(getResources().getDrawable(R.mipmap.ic_bg_main));
                 binding.simu.setBackground(getResources().getDrawable(R.mipmap.ic_bg_but));
                 binding.firm.setBackground(null);
                 break;
@@ -102,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ncHelper.SendMainMessageASync(MessageHelperFinal.LoginMessage("029005076", "123456"));
                 new Loginrsp(this);
                 break;
+            //跳转注册页面
             case R.id.register:
                 Intent intent = new Intent(this ,RegisterActivity.class);
                 startActivity(intent);

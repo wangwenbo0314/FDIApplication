@@ -163,7 +163,7 @@ public class UDPClientHelper {
     }
 
 
-    /**
+    /*
      * 读取服务器发过来的信息
      *
      * @return
@@ -176,7 +176,6 @@ public class UDPClientHelper {
                 dpRcv = new DatagramPacket(msgRcv, msgRcv.length);
                 clientsocket.receive(dpRcv);
                 receiveMessage = new String(dpRcv.getData(), dpRcv.getOffset(), dpRcv.getLength());
-//                Log.i("Tag12", receiveMessage);
                 Log.i("Tag019", receiveMessage());
             }
         } catch (Exception ex) {
@@ -208,7 +207,7 @@ public class UDPClientHelper {
     }
 
 
-    /**
+    /*
      * 异步返回消息是否发送成功
      *
      * @param message
@@ -218,7 +217,7 @@ public class UDPClientHelper {
     }
 
 
-    /**
+    /*
      * 同步发送信息
      *
      * @param msg 消息体
@@ -240,7 +239,7 @@ public class UDPClientHelper {
         return false;
     }
 
-    /**
+    /*
      * 承载对象Client
      */
     DatagramSocket clientsocket = null;
@@ -248,7 +247,7 @@ public class UDPClientHelper {
 
     int port_super = 0;
 
-    /**
+    /*
      * 接收服务器信息处理线程
      */
     Thread threadReceive1 = null;
